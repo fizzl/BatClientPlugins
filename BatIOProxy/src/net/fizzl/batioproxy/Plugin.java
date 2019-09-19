@@ -34,7 +34,8 @@ NetworkCallback{
 	public void loadPlugin() {
 		gui = getClientGUI();
 		Log.gui = gui;
-		threads = new Vector<IOThread>();		
+		Log.i("BatIOPRoxy: Starting threads.");
+		threads = new Vector<IOThread>();
 		new Thread() {
 			public void run() {
 				try {

@@ -16,7 +16,7 @@ public class Log {
 	
 	public static void d(String msg) {
 		if(!DEBUG) return;
-		File f = new File("/matscan.log");
+		File f = new File("/batioproxy.log");
 		try {
 			FileWriter w = new FileWriter(f, true);
 			w.append(msg+"\n");

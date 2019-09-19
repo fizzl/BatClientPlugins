@@ -20,11 +20,11 @@ public class Parser implements IDataParser {
 	int lbcount = 0;
 	static MatMap m = new MatMap();
 	EParserState state = EParserState.PS_NONE;
-	static int x,y, px, py; // Current coordinates
+	static int x,y, gx, gy, px, py; // Current coordinates
 	Pattern pLocation, pShort, pExits;
 	
 	Parser() {
-		pLocation = Pattern.compile(".*Coordinates: (.*)x, (.*)y\\)");
+		pLocation = Pattern.compile(".*\\(Coordinates: (.*)x, (.*)y; Global: (.*)x, (.*)y\\)");
 		pShort = Pattern.compile("Loc:(.*)");
 		pExits = Pattern.compile("Exits:(.*)");
 	}
@@ -39,8 +39,12 @@ public class Parser implements IDataParser {
 			if(m.matches()) {
 				String x = m.group(1);
 				String y = m.group(2);
+				String gx = m.group(3);
+				String gy = m.group(4#);
 				Parser.x = Integer.parseInt(x);
 				Parser.y = Integer.parseInt(y);
+				Parser.gx = Integer.parseInt(gx);
+				Parser.gy = Integer.parseInt(gy);
 			}
 			parsePeer(arg);
 			break;
